@@ -1,9 +1,10 @@
 
-// ==============================
-// SORA - SISTEM AUTENTIKASI
-// ==============================
+/* ==============================
+   SORA - SISTEM AUTENTIKASI
+============================== */
 
-const SORA_URL = "http://127.0.0.1:5503";
+// URL WEBSITE SORA ONLINE
+const SORA_URL = "https://sora-xi-seven.vercel.app";
 
 // ==============================
 // PENDAFTARAN AKUN
@@ -45,11 +46,11 @@ if (registerForm) {
         message.textContent = "Akun berhasil dibuat! Mengalihkan...";
 
         setTimeout(() => {
-          window.location.href = "dashboard.html";
+          window.location.href = `${SORA_URL}/dashboard.html`;
         }, 1500);
       } else {
         message.textContent =
-          "Pendaftaran berhasil! Silakan periksa email untuk verifikasi akun.";
+          "Pendaftaran berhasil! Silakan periksa email kamu dan klik link verifikasi untuk mengaktifkan akun.";
       }
 
     } catch (error) {
@@ -94,7 +95,7 @@ if (loginForm) {
       message.textContent = "Login berhasil! Mengalihkan...";
 
       setTimeout(() => {
-        window.location.href = "dashboard.html";
+        window.location.href = `${SORA_URL}/dashboard.html`;
       }, 1000);
 
     } catch (error) {
