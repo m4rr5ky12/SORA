@@ -1,0 +1,353 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengaturan Kartu Jawaban - SORA.</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .answer-settings {
+      max-width: 650px;
+      margin: 35px auto;
+      padding: 25px;
+      background: #fff;
+      border-radius: 18px;
+      color: #563746;
+    }
+
+    .answer-settings label {
+      display: block;
+      margin: 18px 0 7px;
+      font-weight: bold;
+    }
+
+    .answer-settings input:not([type="checkbox"]):not([type="color"]),
+    .answer-settings select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #e8c6d5;
+      border-radius: 10px;
+      font-size: 15px;
+      box-sizing: border-box;
+    }
+
+    .answer-settings input[type="color"] {
+      width: 100%;
+      height: 45px;
+      cursor: pointer;
+    }
+
+    .answer-settings button {
+      width: 100%;
+      padding: 13px;
+      margin-top: 22px;
+      border: none;
+      border-radius: 10px;
+      background: #E875A5;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .answer-preview {
+      width: 100%;
+      max-width: 360px;
+      aspect-ratio: 9 / 16;
+      box-sizing: border-box;
+      margin: 25px auto;
+      padding: 25px;
+      border: 1px solid #f1d8e3;
+      text-align: center;
+      border-radius: 16px;
+      overflow-wrap: anywhere;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+      transition: box-shadow .2s, border .2s;
+    }
+
+    .preview-question {
+      margin: 20px 0;
+      padding: 15px;
+      background: #fce4ed;
+      border-radius: 12px;
+    }
+
+    .preview-answer {
+      padding: 15px;
+      background: #fff;
+      border-radius: 12px;
+    }
+
+    .answer-settings .owner-option {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .owner-option input {
+      width: auto;
+    }
+
+    .preview-decoration {
+      font-size: 25px;
+      margin-bottom: 12px;
+    }
+
+    .preview-watermark {
+      font-size: 12px;
+      font-weight: bold;
+      opacity: .7;
+      margin-top: 15px;
+      transition: all .2s;
+    }
+
+    .preview-watermark.theme-classic {
+      font-family: Arial, sans-serif;
+      letter-spacing: 1px;
+    }
+
+    .preview-watermark.theme-elegant {
+      font-family: Georgia, serif;
+      font-style: italic;
+      letter-spacing: 2px;
+    }
+
+    .preview-watermark.theme-neon {
+      font-family: Arial, sans-serif;
+      letter-spacing: 3px;
+      text-shadow: 0 0 5px currentColor, 0 0 12px currentColor;
+    }
+
+    .preview-watermark.theme-minimal {
+      font-family: Arial, sans-serif;
+      font-size: 9px;
+      letter-spacing: 1px;
+      opacity: .45;
+      font-weight: normal;
+    }
+
+    /* LOGO SORA ASLI */
+
+    .preview-logo {
+      display: block;
+      object-fit: contain;
+      width: auto;
+      height: auto;
+      max-width: 75%;
+      margin-left: auto;
+      margin-right: auto;
+      flex-shrink: 0;
+      transition: all .2s;
+    }
+
+    .preview-logo.logo-small {
+      width: 75px;
+      max-height: 65px;
+    }
+
+    .preview-logo.logo-medium {
+      width: 110px;
+      max-height: 95px;
+    }
+
+    .preview-logo.logo-large {
+      width: 150px;
+      max-height: 125px;
+    }
+
+    .preview-logo.logo-bottom {
+      margin-top: 20px;
+      margin-bottom: 0;
+    }
+
+    .preview-logo.logo-top {
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    .preview-logo.hidden-logo {
+      display: none !important;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="answer-settings">
+    <h2>Pengaturan Kartu Jawaban</h2>
+    <p>Atur tampilan kartu jawaban SORA kamu.</p>
+
+    <label for="cardTheme">Tema Kartu</label>
+    <select id="cardTheme">
+      <option value="pink">Pink Rose</option>
+      <option value="dark">Dark Mode</option>
+      <option value="midnight">Midnight Blue</option>
+      <option value="neon">Neon Gaming</option>
+      <option value="minimal">Minimalist</option>
+      <option value="nature">Nature Green</option>
+    </select>
+
+    <label for="cardColor">Warna Latar Kartu</label>
+    <input type="color" id="cardColor" value="#FFFFFF">
+
+    <label for="cardTextColor">Warna Tulisan</label>
+    <input type="color" id="cardTextColor" value="#563746">
+
+    <label for="cardFont">Jenis Font</label>
+    <select id="cardFont">
+      <option value="Arial, sans-serif">Arial</option>
+      <option value="Georgia, serif">Georgia</option>
+      <option value="Verdana, sans-serif">Verdana</option>
+      <option value="'Trebuchet MS', sans-serif">Trebuchet</option>
+      <option value="'Courier New', monospace">Courier New</option>
+    </select>
+
+    <label for="cardStyle">Bentuk Kartu</label>
+    <select id="cardStyle">
+      <option value="rounded">Sudut Membulat</option>
+      <option value="square">Kotak</option>
+      <option value="soft">Membulat Lembut</option>
+    </select>
+
+    <label for="cardSize">Ukuran Kartu</label>
+    <select id="cardSize">
+      <option value="story">Instagram Story (9:16)</option>
+      <option value="square">Postingan (1:1)</option>
+      <option value="landscape">Landscape (16:9)</option>
+    </select>
+
+    <hr>
+    <h3>Efek Visual Kartu</h3>
+
+    <label for="cardShadow">Bayangan Kartu</label>
+    <select id="cardShadow">
+      <option value="none">Tanpa Bayangan</option>
+      <option value="light">Tipis</option>
+      <option value="medium" selected>Sedang</option>
+      <option value="heavy">Tebal</option>
+    </select>
+
+    <label for="cardBorder">Garis Tepi Kartu</label>
+    <select id="cardBorder">
+      <option value="none">Tanpa Garis</option>
+      <option value="white">Putih</option>
+      <option value="black">Hitam</option>
+      <option value="pink">Pink</option>
+    </select>
+
+    <label class="owner-option">
+      <input type="checkbox" id="cardGlow">
+      Aktifkan Efek Glow
+    </label>
+
+    <label for="cardDecoration">Dekorasi Sudut</label>
+    <select id="cardDecoration">
+      <option value="none">Tanpa Dekorasi</option>
+      <option value="star">⭐ Bintang</option>
+      <option value="heart">❤️ Hati</option>
+      <option value="sparkle">✨ Kilau</option>
+    </select>
+
+    <hr>
+    <h3>Watermark SORA</h3>
+
+    <label class="owner-option">
+      <input type="checkbox" id="cardWatermark" checked>
+      Tampilkan Watermark SORA
+    </label>
+
+    <label for="cardWatermarkPosition">Posisi Watermark</label>
+    <select id="cardWatermarkPosition">
+      <option value="top">Atas</option>
+      <option value="center">Tengah</option>
+      <option value="bottom" selected>Bawah</option>
+    </select>
+
+    <label for="cardWatermarkSize">Ukuran Watermark</label>
+    <select id="cardWatermarkSize">
+      <option value="small">Kecil</option>
+      <option value="medium" selected>Sedang</option>
+      <option value="large">Besar</option>
+    </select>
+
+    <label for="cardWatermarkTheme">Tema Watermark</label>
+    <select id="cardWatermarkTheme">
+      <option value="classic">Classic</option>
+      <option value="elegant">Elegant</option>
+      <option value="neon">Neon</option>
+      <option value="minimal">Minimal</option>
+    </select>
+
+    <hr>
+    <h3>Logo SORA</h3>
+
+    <label class="owner-option">
+      <input type="checkbox" id="cardLogo" checked>
+      Tampilkan Logo SORA
+    </label>
+
+    <label for="cardLogoPosition">Posisi Logo</label>
+    <select id="cardLogoPosition">
+      <option value="top">Atas</option>
+      <option value="bottom">Bawah</option>
+    </select>
+
+    <label for="cardLogoSize">Ukuran Logo</label>
+    <select id="cardLogoSize">
+      <option value="small">Kecil</option>
+      <option value="medium" selected>Sedang</option>
+      <option value="large">Besar</option>
+    </select>
+
+    <hr>
+
+    <label class="owner-option">
+      <input type="checkbox" id="showOwner" checked>
+      Tampilkan nama pemilik Q&A
+    </label>
+
+    <div class="answer-preview" id="answerPreview">
+      <div class="preview-decoration" id="previewDecoration"></div>
+
+      <!-- Logo asli SORA -->
+      <img
+        src="assets/logo-sora.png"
+        alt="Logo SORA Anonymous Q&A"
+        class="preview-logo logo-medium logo-top"
+        id="previewLogo"
+      >
+
+      <strong id="previewOwner">SORA USER</strong>
+
+      <div class="preview-question">
+        <p>Pertanyaan</p>
+        <h3>Bagaimana kabarmu hari ini?</h3>
+      </div>
+
+      <div class="preview-answer">
+        <p>Jawaban</p>
+        <h3>Alhamdulillah, baik!</h3>
+      </div>
+
+      <div class="preview-watermark theme-classic" id="previewWatermark">
+        SORA. - Your space, your story.
+      </div>
+    </div>
+
+    <button type="button" id="saveAnswerSettings">
+      Simpan Pengaturan
+    </button>
+
+    <p id="answerMessage"></p>
+
+    <a href="dashboard.html">Kembali ke Dashboard</a>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
+  <script src="answer-card.js"></script>
+</body>
+</html>

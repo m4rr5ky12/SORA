@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buat Q&A — SORA</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: #fff5f9;
+      min-height: 100vh;
+    }
+
+    .create-container {
+      max-width: 650px;
+      margin: 55px auto;
+      padding: 20px;
+    }
+
+    .create-card {
+      background: white;
+      border: 1px solid #f4dbe5;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 12px 35px #d779a41a;
+    }
+
+    .create-card h1 {
+      color: #d95f91;
+      margin-bottom: 8px;
+    }
+
+    .create-card p {
+      color: #927487;
+      font-size: 14px;
+      margin-bottom: 23px;
+    }
+
+    .create-card label {
+      display: block;
+      font-weight: bold;
+      font-size: 14px;
+      margin: 17px 0 7px;
+    }
+
+    .create-card input,
+    .create-card textarea {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #f0cfdd;
+      border-radius: 10px;
+      outline: none;
+      font-family: Arial, sans-serif;
+    }
+
+    .create-card textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .create-card input:focus,
+    .create-card textarea:focus {
+      border-color: #e875a5;
+    }
+
+    .mode-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 12px;
+      color: #896779;
+      font-size: 14px;
+    }
+
+    .mode-option input {
+      width: auto;
+    }
+
+    .create-card button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 25px;
+      background: #e875a5;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .create-card button:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+    }
+
+    #result {
+      margin-top: 18px;
+      font-size: 14px;
+      overflow-wrap: anywhere;
+    }
+
+    #result a {
+      color: #d95f91;
+      font-weight: bold;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: #d95f91;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="create-container">
+    <a href="dashboard.html" class="back-link">← Kembali ke Dashboard</a>
+
+    <div class="create-card">
+      <a href="index.html" class="logo">SORA<span>.</span></a>
+
+      <h1>Buat halaman Q&A 💌</h1>
+      <p>Buat ruang pertanyaan pribadimu sendiri.</p>
+
+      <form id="qnaForm">
+
+        <label>Judul halaman</label>
+        <input
+          type="text"
+          id="qnaTitle"
+          placeholder="Contoh: Ask me anything!"
+          maxlength="60"
+          required
+        >
+
+        <label>Deskripsi</label>
+        <textarea
+          id="qnaDescription"
+          placeholder="Tulis pesan untuk pengunjung..."
+          maxlength="200"
+        ></textarea>
+
+        <label>Mode pengiriman</label>
+
+        <div class="mode-option">
+          <input type="checkbox" id="anonymousMode" checked>
+          <span>Izinkan pengiriman anonim</span>
+        </div>
+
+        <div class="mode-option">
+          <input type="checkbox" id="identifiedMode" checked>
+          <span>Izinkan pengiriman dengan nama ditampilkan</span>
+        </div>
+
+        <button type="submit" id="createButton">
+          Buat Halaman Q&A
+        </button>
+
+      </form>
+
+      <div id="result"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
+  <script src="create-qna.js"></script>
+
+</body>
+</html>

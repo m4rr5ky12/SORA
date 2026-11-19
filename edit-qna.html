@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Halaman Q&A - SORA.</title>
+  <link rel="stylesheet" href="style.css?v=142">
+
+  <style>
+    .edit-qna-container {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 25px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 5px 25px rgba(86, 55, 70, 0.08);
+    }
+
+    .edit-qna-container h1 {
+      color: #D86B99;
+      margin-bottom: 10px;
+    }
+
+    .edit-qna-container label {
+      display: block;
+      margin-top: 20px;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .edit-qna-container input,
+    .edit-qna-container textarea {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #E8C7D6;
+      border-radius: 12px;
+      font-family: Arial, sans-serif;
+      font-size: 15px;
+    }
+
+    .edit-qna-container textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .edit-qna-container button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 25px;
+      border: none;
+      border-radius: 12px;
+      background: #D86B99;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .edit-qna-container button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    #editMessage {
+      margin-top: 15px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="navbar">
+    <a href="dashboard.html" class="logo">SORA.</a>
+    <a href="manage-qna.html">Kembali</a>
+  </header>
+
+  <main class="edit-qna-container">
+
+    <h1>Edit Halaman Q&A</h1>
+
+    <p>Ubah informasi halaman Q&A kamu.</p>
+
+    <form id="editQnaForm">
+
+      <label for="qnaTitle">Judul Halaman</label>
+      <input
+        type="text"
+        id="qnaTitle"
+        maxlength="100"
+        required
+        placeholder="Masukkan judul halaman"
+      >
+
+      <label for="qnaDescription">Deskripsi</label>
+      <textarea
+        id="qnaDescription"
+        maxlength="500"
+        placeholder="Masukkan deskripsi halaman"
+      ></textarea>
+
+      <label for="qnaSlug">Slug</label>
+      <input
+        type="text"
+        id="qnaSlug"
+        maxlength="100"
+        required
+        placeholder="alamat-halaman"
+      >
+
+      <button type="submit" id="saveButton">
+        Simpan Perubahan
+      </button>
+
+      <p id="editMessage"></p>
+
+    </form>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js?v=142"></script>
+  <script src="edit-qna.js?v=142"></script>
+
+</body>
+</html>

@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - SORA.</title>
+  <link rel="stylesheet" href="style.css?v=154">
+
+  <style>
+    .dashboard-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px;
+      margin: 30px 0;
+    }
+
+    .stat-card {
+      background: white;
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 5px 20px rgba(86, 55, 70, 0.07);
+    }
+
+    .stat-card h3 {
+      font-size: 15px;
+      color: #9B6480;
+      margin: 0 0 12px;
+    }
+
+    .stat-number {
+      font-size: 32px;
+      font-weight: bold;
+      color: #D86B99;
+    }
+
+    .stat-icon {
+      font-size: 25px;
+      margin-bottom: 12px;
+    }
+
+    #adminMenu {
+      display: none;
+    }
+
+    /* RESPONSIVE DASHBOARD */
+
+    @media (max-width: 600px) {
+      .dashboard-stats {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .stat-card {
+        padding: 20px;
+      }
+
+      .stat-number {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="navbar">
+    <a href="index.html" class="logo">SORA.</a>
+    <a href="#" id="logoutButton">Keluar</a>
+  </header>
+
+  <main class="dashboard-container">
+
+    <h1>Dashboard SORA.</h1>
+
+    <p>
+      Selamat datang,
+      <strong id="userName">Pengguna SORA</strong>!
+    </p>
+
+    <!-- STATISTIK -->
+    <section class="dashboard-stats">
+
+      <!-- TOTAL HALAMAN QNA -->
+      <div class="stat-card">
+        <div class="stat-icon">📝</div>
+        <h3>Total Halaman Q&A</h3>
+        <div class="stat-number" id="totalQna">-</div>
+      </div>
+
+      <!-- TOTAL PERTANYAAN -->
+      <div class="stat-card">
+        <div class="stat-icon">💌</div>
+        <h3>Total Pertanyaan Masuk</h3>
+        <div class="stat-number" id="totalQuestions">-</div>
+      </div>
+
+      <!-- TOTAL PENGUNJUNG -->
+      <div class="stat-card">
+        <div class="stat-icon">👁️</div>
+        <h3>Total Pengunjung</h3>
+        <div class="stat-number" id="totalVisits">-</div>
+      </div>
+
+    </section>
+
+    <!-- MENU -->
+    <section class="dashboard-menu">
+
+      <a href="create-qna.html" class="dashboard-link">
+        <span>➕</span>
+        <span>Buat Halaman Q&A</span>
+      </a>
+
+      <a href="manage-qna.html" class="dashboard-link">
+        <span>📋</span>
+        <span>Kelola Halaman Q&A</span>
+      </a>
+
+      <a href="inbox.html" class="dashboard-link">
+        <span>💌</span>
+        <span>Kotak Pertanyaan</span>
+      </a>
+
+      <a href="editor.html" class="dashboard-link">
+        <span>🎨</span>
+        <span>Edit Desain Q&A</span>
+      </a>
+
+      <a href="answer-card.html" class="dashboard-link">
+        <span>🖼️</span>
+        <span>Desain Kartu Jawaban</span>
+      </a>
+
+      <a href="saweria.html" class="dashboard-link">
+        <span>☕</span>
+        <span>Dukung SORA</span>
+      </a>
+
+      <a href="suggestion.html" class="dashboard-link">
+        <span>💡</span>
+        <span>Kirim Saran</span>
+      </a>
+
+      <!-- MENU ADMIN -->
+      <a href="admin.html" class="dashboard-link" id="adminMenu">
+        <span>🛡️</span>
+        <span>Admin SORA</span>
+      </a>
+
+      <a href="index.html" class="dashboard-link">
+        <span>🏠</span>
+        <span>Halaman Utama</span>
+      </a>
+
+    </section>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js?v=154"></script>
+  <script src="dashboard.js?v=154"></script>
+
+</body>
+</html>

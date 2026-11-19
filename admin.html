@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin SORA.</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #FFF5F9;
+      color: #563746;
+    }
+
+    .navbar {
+      background: white;
+      padding: 18px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 3px 15px rgba(86, 55, 70, 0.08);
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #D86B99;
+      text-decoration: none;
+    }
+
+    .navbar a:last-child {
+      text-decoration: none;
+      color: #563746;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .admin-card {
+      background: white;
+      padding: 25px;
+      border-radius: 18px;
+      box-shadow: 0 5px 20px rgba(86, 55, 70, 0.08);
+    }
+
+    h1 {
+      margin-top: 0;
+      color: #D86B99;
+    }
+
+    .admin-info {
+      background: #FFF0F6;
+      padding: 15px;
+      border-radius: 12px;
+      margin: 15px 0;
+      overflow-wrap: anywhere;
+    }
+
+    #adminMessage {
+      margin: 15px 0;
+      color: #9B6480;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .toolbar button,
+    .back-button {
+      border: none;
+      background: #E8759F;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .toolbar button:hover,
+    .back-button:hover {
+      background: #D65D8B;
+    }
+
+    .toolbar button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 700px;
+    }
+
+    th, td {
+      padding: 14px;
+      border-bottom: 1px solid #F3DCE7;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #FCE4ED;
+    }
+
+    .admin-delete {
+      border: none;
+      background: #E8759F;
+      color: white;
+      padding: 9px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .admin-delete:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .admin-empty {
+      text-align: center;
+      padding: 30px;
+      color: #A47C91;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 12px;
+        margin: 20px auto;
+      }
+
+      .admin-card {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="navbar">
+    <a href="dashboard.html" class="logo">SORA.</a>
+    <a href="dashboard.html">← Dashboard</a>
+  </header>
+
+  <main class="container">
+    <section class="admin-card">
+
+      <h1>Admin SORA.</h1>
+
+      <div class="admin-info">
+        <strong>Admin Login:</strong>
+        <p id="adminIdentity">Memeriksa identitas...</p>
+      </div>
+
+      <p id="adminMessage">
+        Memeriksa akses admin...
+      </p>
+
+      <div class="toolbar">
+        <button id="refreshButton" type="button">
+          🔄 Refresh Saran
+        </button>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Kategori</th>
+              <th>Saran</th>
+              <th>User ID</th>
+              <th>Tanggal</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+
+          <tbody id="suggestionTable">
+            <tr>
+              <td colspan="5" class="admin-empty">
+                Memuat data...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <a href="dashboard.html" class="back-button">
+        ← Kembali ke Dashboard
+      </a>
+
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
+  <script src="admin.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saran - SORA.</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .suggestion-container {
+      width: min(100% - 30px, 650px);
+      margin: 40px auto;
+    }
+
+    .suggestion-card {
+      background: #FFFFFF;
+      padding: 30px;
+      border: 1px solid #F5D9E5;
+      border-radius: 22px;
+      box-shadow: 0 8px 25px rgba(232, 117, 165, 0.08);
+    }
+
+    .suggestion-card h1 {
+      color: #E875A5;
+      margin-top: 0;
+    }
+
+    .suggestion-card p {
+      color: #927487;
+      line-height: 1.7;
+    }
+
+    .suggestion-form label {
+      display: block;
+      margin: 18px 0 8px;
+      font-weight: bold;
+      color: #563746;
+    }
+
+    .suggestion-form select,
+    .suggestion-form textarea {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #F0C9DA;
+      border-radius: 12px;
+      background: #FFF9FC;
+      color: #563746;
+      font-family: Arial, sans-serif;
+      font-size: 15px;
+    }
+
+    .suggestion-form textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .suggestion-form button {
+      width: 100%;
+      margin-top: 22px;
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      background: #E875A5;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .suggestion-form button:hover {
+      background: #D95D91;
+    }
+
+    .suggestion-form button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    #suggestionMessage {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    .suggestion-back {
+      display: inline-block;
+      margin-top: 20px;
+      color: #927487;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="navbar">
+    <a href="dashboard.html" class="logo">SORA.</a>
+    <a href="dashboard.html">Dashboard</a>
+  </header>
+
+  <main class="suggestion-container">
+
+    <section class="suggestion-card">
+
+      <h1>💡 Kirim Saran</h1>
+
+      <p>
+        Punya ide untuk membuat SORA lebih baik?
+        Kirim saran, kritik, atau laporkan masalah
+        yang kamu temukan.
+      </p>
+
+      <form id="suggestionForm" class="suggestion-form">
+
+        <label for="suggestionCategory">
+          Kategori
+        </label>
+
+        <select id="suggestionCategory" required>
+          <option value="">Pilih kategori</option>
+          <option value="Ide Fitur">Ide Fitur</option>
+          <option value="Bug atau Error">Bug atau Error</option>
+          <option value="Desain">Desain</option>
+          <option value="Kritik">Kritik</option>
+          <option value="Lainnya">Lainnya</option>
+        </select>
+
+        <label for="suggestionText">
+          Saran atau Masukan
+        </label>
+
+        <textarea
+          id="suggestionText"
+          placeholder="Tuliskan saran kamu untuk SORA..."
+          minlength="5"
+          maxlength="2000"
+          required
+        ></textarea>
+
+        <button type="submit" id="suggestionSubmit">
+          Kirim Saran
+        </button>
+
+        <p id="suggestionMessage"></p>
+
+      </form>
+
+    </section>
+
+    <a href="dashboard.html" class="suggestion-back">
+      ← Kembali ke Dashboard
+    </a>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
+  <script src="suggestion.js"></script>
+
+</body>
+</html>

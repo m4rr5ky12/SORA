@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kelola Halaman Q&A - SORA</title>
+
+  <link rel="stylesheet" href="style.css?v=153">
+
+  <style>
+    body {
+      background: #FFF5F9;
+      color: #563746;
+    }
+
+    .manage-container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 40px auto;
+    }
+
+    .manage-header {
+      background: white;
+      padding: 25px;
+      border-radius: 18px;
+      margin-bottom: 25px;
+      box-shadow: 0 5px 20px rgba(86, 55, 70, 0.06);
+    }
+
+    .manage-header h1 {
+      margin-top: 0;
+    }
+
+    .qna-card {
+      background: white;
+      padding: 22px;
+      margin-bottom: 18px;
+      border-radius: 18px;
+      box-shadow: 0 5px 20px rgba(86, 55, 70, 0.06);
+    }
+
+    .qna-card h3 {
+      margin-top: 0;
+      color: #D63384;
+    }
+
+    .qna-card p {
+      color: #777;
+      overflow-wrap: anywhere;
+    }
+
+    .qna-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .qna-actions button,
+    .qna-actions a {
+      display: inline-block;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 10px;
+      text-decoration: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .open-button {
+      background: #FCE4ED;
+      color: #A61E63;
+    }
+
+    .edit-button {
+      background: #E8DFFF;
+      color: #6844B5;
+    }
+
+    .copy-button {
+      background: #E4F7EA;
+      color: #278348;
+    }
+
+    .qr-button {
+      background: #E4F0FF;
+      color: #2864A5;
+    }
+
+    .delete-button {
+      background: #FFE5E5;
+      color: #C62828;
+    }
+
+    .qna-actions button:hover,
+    .qna-actions a:hover {
+      opacity: 0.8;
+    }
+
+    #manageMessage {
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .empty-message {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+    }
+
+    /* QR MODAL */
+
+    .qr-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(35, 20, 30, 0.65);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      z-index: 9999;
+    }
+
+    .qr-modal {
+      background: white;
+      width: 100%;
+      max-width: 400px;
+      padding: 25px;
+      border-radius: 22px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .qr-modal h2 {
+      color: #D63384;
+      margin-top: 0;
+    }
+
+    .qr-modal p {
+      color: #777;
+      font-size: 14px;
+      overflow-wrap: anywhere;
+    }
+
+    .qr-code-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: white;
+      padding: 15px;
+      border: 1px solid #eee;
+      border-radius: 15px;
+      min-height: 220px;
+      margin: 20px 0;
+    }
+
+    .qr-code-box img,
+    .qr-code-box canvas {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .qr-modal-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .qr-modal-actions button {
+      border: none;
+      padding: 13px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .qr-download-button {
+      background: #D63384;
+      color: white;
+    }
+
+    .qr-close-button {
+      background: #F3F3F3;
+      color: #555;
+    }
+
+    @media (max-width: 600px) {
+      .manage-container {
+        width: 94%;
+        margin: 20px auto;
+      }
+
+      .qna-actions button,
+      .qna-actions a {
+        flex: 1 1 40%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="manage-container">
+
+    <div class="manage-header">
+      <a href="dashboard.html">← Kembali ke Dashboard</a>
+
+      <h1>Kelola Halaman Q&A</h1>
+
+      <p>
+        Kelola halaman Q&A, edit informasi, salin link,
+        buat QR Code, atau hapus halaman.
+      </p>
+    </div>
+
+    <div id="manageMessage"></div>
+
+    <div id="qnaList"></div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <script src="supabase.js?v=153"></script>
+  <script src="manage-qna.js?v=153"></script>
+
+</body>
+</html>
+
+/* ========================================
+   QNA PAGE STATISTICS
+======================================== */
+
+.qna-page-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 18px 0;
+  padding: 14px;
+  background: #FFF5F9;
+  border: 1px solid #F5DCE7;
+  border-radius: 12px;
+}
+
+.qna-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #9B6480;
+  font-size: 14px;
+}
+
+.qna-stat-item strong {
+  color: #D86B99;
+  font-size: 17px;
+}
+
+@media (max-width: 480px) {
+  .qna-page-stats {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

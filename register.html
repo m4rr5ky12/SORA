@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daftar Akun — SORA</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      background: linear-gradient(135deg, #fff5f9, #f7c5d8);
+    }
+
+    .auth-card {
+      width: 100%;
+      max-width: 420px;
+      padding: 35px;
+      background: white;
+      border-radius: 22px;
+      box-shadow: 0 15px 45px #d779a433;
+    }
+
+    .auth-card h1 {
+      color: #d95f91;
+      margin-bottom: 8px;
+    }
+
+    .auth-card p {
+      color: #927487;
+      margin-bottom: 22px;
+      font-size: 14px;
+    }
+
+    .auth-card label {
+      display: block;
+      margin: 14px 0 6px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .auth-card input {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #f0cfdd;
+      border-radius: 10px;
+      outline: none;
+    }
+
+    .auth-card input:focus {
+      border-color: #e875a5;
+    }
+
+    .auth-card button {
+      width: 100%;
+      margin-top: 22px;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      background: #e875a5;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .auth-card button:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+    }
+
+    .auth-message {
+      margin-top: 15px;
+      font-size: 13px;
+      overflow-wrap: anywhere;
+    }
+
+    .auth-bottom {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="auth-card">
+    <a href="index.html" class="logo">SORA<span>.</span></a>
+
+    <h1>Buat Akun</h1>
+    <p>Bergabung dan mulai buat halaman Q&A milikmu.</p>
+
+    <form id="registerForm">
+      <label>Nama tampilan</label>
+      <input type="text" id="displayName" placeholder="Nama kamu" required maxlength="40">
+
+      <label>Email</label>
+      <input type="email" id="email" placeholder="nama@email.com" required>
+
+      <label>Password</label>
+      <input type="password" id="password" placeholder="Minimal 8 karakter" minlength="8" required>
+
+      <button type="submit" id="registerButton">Daftar Sekarang</button>
+    </form>
+
+    <div class="auth-message" id="message"></div>
+
+    <div class="auth-bottom">
+      Sudah punya akun?
+      <a href="login.html" style="color:#d95f91;font-weight:bold">Masuk</a>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
+  <script src="auth.js"></script>
+</body>
+</html>

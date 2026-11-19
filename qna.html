@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#e875a5">
+  <title>Kirim Pertanyaan — SORA</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    body {
+      min-height: 100vh;
+      padding: 25px 15px;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at top right, #f7c5d8, transparent 40%),
+        #fff5f9;
+    }
+
+    .qna-container {
+      width: 100%;
+      max-width: 480px;
+    }
+
+    .qna-card {
+      background: white;
+      padding: 30px;
+      border-radius: 24px;
+      border: 1px solid #f4dbe5;
+      box-shadow: 0 15px 45px #d779a422;
+    }
+
+    .qna-logo {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .qna-owner {
+      width: 75px;
+      height: 75px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 15px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f7c5d8, #e875a5);
+      color: white;
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    .qna-card h1 {
+      text-align: center;
+      color: #563746;
+      font-size: 25px;
+      margin-bottom: 8px;
+    }
+
+    .qna-description {
+      text-align: center;
+      color: #927487;
+      font-size: 14px;
+      margin-bottom: 25px;
+      overflow-wrap: anywhere;
+    }
+
+    .qna-card label {
+      display: block;
+      font-weight: bold;
+      font-size: 14px;
+      margin: 16px 0 7px;
+    }
+
+    .qna-card input,
+    .qna-card textarea {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #f0cfdd;
+      border-radius: 11px;
+      outline: none;
+      font-family: Arial, sans-serif;
+    }
+
+    .qna-card textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .qna-card input:focus,
+    .qna-card textarea:focus {
+      border-color: #e875a5;
+    }
+
+    .qna-mode {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px;
+      margin-top: 15px;
+      background: #fff5f9;
+      border-radius: 11px;
+      font-size: 13px;
+      color: #896779;
+    }
+
+    .qna-mode input {
+      width: auto;
+    }
+
+    .qna-card button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 20px;
+      background: #e875a5;
+      color: white;
+      border: none;
+      border-radius: 11px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .qna-card button:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+    }
+
+    #qnaMessage {
+      margin-top: 15px;
+      text-align: center;
+      font-size: 13px;
+      overflow-wrap: anywhere;
+    }
+
+    .qna-footer {
+      text-align: center;
+      color: #b28b9f;
+      font-size: 11px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="qna-container">
+    <div class="qna-card">
+
+      <div class="qna-logo">
+        <a href="index.html" class="logo">SORA<span>.</span></a>
+      </div>
+
+      <div class="qna-owner" id="ownerAvatar">S</div>
+
+      <h1 id="qnaTitle">Memuat halaman...</h1>
+
+      <p class="qna-description" id="qnaDescription">
+        Mohon tunggu sebentar.
+      </p>
+
+      <form id="publicQnaForm" hidden>
+
+        <label for="senderName">Nama kamu</label>
+        <input
+          type="text"
+          id="senderName"
+          maxlength="40"
+          placeholder="Masukkan nama atau nama samaran"
+          required
+        >
+
+        <label for="questionText">Pertanyaan atau pesan</label>
+        <textarea
+          id="questionText"
+          maxlength="1000"
+          placeholder="Tulis pesanmu di sini..."
+          required
+        ></textarea>
+
+        <label class="qna-mode">
+          <input type="checkbox" id="anonymousMode">
+          Kirim secara anonim
+        </label>
+
+        <button type="submit" id="sendButton">
+          Kirim Pertanyaan 💗
+        </button>
+
+      </form>
+
+      <div id="qnaMessage"></div>
+
+      <div class="qna-footer">
+        Your space, your story.
+        <br>
+        Made with love by SORA 💗
+      </div>
+
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
+  <script src="qna.js"></script>
+
+</body>
+</html>
